@@ -1,0 +1,25 @@
+name: Php
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Php
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.1'
+
+    - name: Test
+      run: phpunit client/tests/test.php
+      env: 
+        CLIENT_KEY: 04ee84bc7f8df421fe0c10ae679bb43f
