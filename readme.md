@@ -3,10 +3,16 @@
 #### Usage
 ```php
     include './client/Client.php';
+    include './client/src/captcha/ImageToText.php';
     include './client/src/captcha/RecaptchaV2.php';
     include './client/src/captcha/HCaptcha.php';
     
     $client = new Client("your_client_key");
+
+    //solve image captcha
+    $body = "base64_captcha_image";
+    $imageRequest = new ImageToTextRequest($body);
+    $imageResult = $client->solve($imageRequest);
     
     //solve Recaptcha 2 (without proxy)
     $websiteURL = "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high";
