@@ -1,4 +1,4 @@
-name: Php
+name: Tests
 
 on:
   push:
@@ -8,18 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  tests:
+  build-test:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v3
-
-    - name: Set up Php
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.1'
-
-    - name: Test
-      run: phpunit client/tests/test.php
-      env: 
+    - uses: php-actions/phpunit@v3
+      env:
         CLIENT_KEY: 04ee84bc7f8df421fe0c10ae679bb43f
+      with:
+        configuration: ./client/tests/phpunit.xml
