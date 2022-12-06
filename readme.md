@@ -1,25 +1,30 @@
-# PHP клиент для CapMonsterCloud api
+# Php client library for Zennolab.CapMonster api
 
-#### Использование
+#### Usage
 ```php
     include './client/Client.php';
-    include './client/src/captcha/ImageToText.php';
+    include './client/src/captcha/RecaptchaV2.php';
+    include './client/src/captcha/HCaptcha.php';
     
     $client = new Client("your_client_key");
     
-    $captchaBody = "body"
-    //создание объекта запроса к api
-    $captchaRequest = new ImageToTextRequest($captchaBody);
+    //solve Recaptcha 2 (without proxy)
+    $websiteURL = "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high";
+    $websiteKey = "6Lcg7CMUAAAAANphynKgn9YAgA4tQ2KI_iqRyTwd";
+    $recaptchaV2Request = new RecaptchaV2Request($websiteURL, $websiteKey);
+    $recaptchaV2Result = $client->solve($recaptchaV2Request);
     
-    //решение капчи
-    $solution = $client->solve($captchaRequest);
-    var_dump($solution);
+    // solve HCaptcha (without proxy)
+    $websiteUrl = "https://lessons.zennolab.com/captchas/hcaptcha/?level=easy";
+    $websiteKey = "472fc7af-86a4-4382-9a49-ca9090474471";
+    $hcatpchaRequest = new HCaptchaRequest($websiteURL, $websiteKey);
+    $hcaptchaResult = $client->solve($hcatpchaRequest);
 ```
 
-#### Формат ответа
- Результат метода solve всегда содержит два поля: bool result, индикатор успеха запроса, и поле mixed message, содержащее текстовое описание ошибки или объект успешного ответа от сервера.
+#### Response format
+ The result of the solve method always contains two fields: bool result, a request success indicator, and a mixed message field containing a text description of the error or an object of a successful response from the server.
 
-#### Поддерживаемые виды капч
+#### Supported captchas
 
 - FunCaptchaTask
 - FunCaptchaTaskProxyless
