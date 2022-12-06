@@ -18,7 +18,7 @@
         public function testRecaptchaSolve() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high",
@@ -36,7 +36,7 @@
         public function testHcaptchaSolve() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "https://lessons.zennolab.com/captchas/hcaptcha/?level=easy",
@@ -54,7 +54,7 @@
         public function testIncorrectWebsite() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "incorrect website",
@@ -72,7 +72,7 @@
         public function testIncorrectMinScore() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high",
@@ -91,7 +91,7 @@
         public function testIncorrectRecognizingThreshold() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "body" => "body",
@@ -109,7 +109,7 @@
         public function testIncorrectWebsiteKey() {
             global $clientKey;
 
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high",
@@ -127,7 +127,7 @@
         public function testIncorrectGt() {
             global $clientKey;
             
-            $client = new Client(["clientKey" => $clientKey]);
+            $client = new Client($clientKey);
             
             $captchaOptions = [
                 "websiteURL" => "https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high",
