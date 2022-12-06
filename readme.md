@@ -5,16 +5,11 @@
     include './client/Client.php';
     include './client/src/captcha/ImageToText.php';
     
-    $clientOptions = [
-        "clientKey" => "your_client_key"
-    ];
-    $client = new Client($clientOptions);
+    $client = new Client("your_client_key");
     
-    $captchaOptions = [
-        "body" => "baset64_body"
-    ];
+    $captchaBody = "body"
     //создание объекта запроса к api
-    $captchaRequest = new ImageToTextRequest($captchaOptions);
+    $captchaRequest = new ImageToTextRequest($captchaBody);
     
     //решение капчи
     $solution = $client->solve($captchaRequest);
